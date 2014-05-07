@@ -29,7 +29,7 @@ def set_relay(data,bank):
 
   print "set_relay bank=" + str(bank) + " data=" + str(data) 
   if bank == 1:
-     data = int(255 - data) # We only want to switch on one relay at a time
+#     data = int(255 - data) # We only want to switch on one relay at a time
      bus.write_byte_data(address,0x12,data)
   elif bank == 0:
      bus.write_byte_data(address,0x13,data)
@@ -45,13 +45,15 @@ def main():
    print "Switching on relay1, bank0"
    set_relay(1,bank0) #switch on relay board
    counter = 0;
-   while counter<9:
+   while counter<8:
        this_relay=int(relay[counter])
        set_relay(this_relay,bank1)
        set_relay(relay0,bank1) #clear relays
        counter += 1
    print ("Cleaning up")
+   set_relay(254,bank0) #switch off relay board
    set_relay(relay[0],bank0) #switch off relay board
+   set_relay(relay[0],bank1) #switch off relay board
  
 if __name__ == "__main__":
    main()
