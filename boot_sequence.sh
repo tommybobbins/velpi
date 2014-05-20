@@ -10,3 +10,4 @@ sleep 10
 # Select
 /usr/local/bin/one_button.py 1
 # Buttons 5 and 7 will now open and close the windows
+/usr/bin/redis-cli -h 433host set "velux/3" "Closed"
