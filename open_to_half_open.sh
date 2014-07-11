@@ -5,4 +5,4 @@ echo "Half Opening" >/tmp/half_opening.txt
 sleep 12
 /usr/local/bin/one_button.py 6
 date >>/tmp/half_opening.txt
-/usr/bin/redis-cli -h 433host expire "velux/3" 3600
+/usr/bin/redis-cli -h 433host expire "velux/3" 14400

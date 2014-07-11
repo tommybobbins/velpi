@@ -1,5 +1,6 @@
 #!/bin/bash
-sleep 10
+/usr/local/bin/one_button.py 8
+sleep 30
 # Keep the time
 /usr/local/bin/one_button.py 1
 # Locate
