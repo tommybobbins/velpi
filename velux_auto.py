@@ -93,11 +93,13 @@ def study_temperatures(attic,half,full,closed,fromposition):
 def check_season(): 
     try:
         season = redthis.get("velux/season")
-        logging.info("Redis Season = %s" % season)
+        logging.info("Redis Season velux/season = %s" % season)
     except:
         season = "Winter"
     if (season == "Winter"):
-        logging.info("Winter is here or redis down. Exiting")
+        logging.info("Winter is here, redis down. set velux/season Summer Exiting")
+        logging.info("Run the command below to initiate redis")
+        logging.info("redis-cli> set velux/season Summer")
         exit(0)
     else:
         logging.info("Summertime. Starting Up")
