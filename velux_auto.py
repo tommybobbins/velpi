@@ -92,6 +92,14 @@ def study_temperatures(attic,half,full,closed,fromposition):
 
 def check_season(): 
     try:
+        holiday = redthis.get("holiday_countdown")
+        logging.info("Holiday Countdown exists = %s" % holiday)
+    except:
+        logging.info("Holiday mode is disabled we need to carry on")
+    if  (holiday):
+        logging.info("Holiday Countdown exists = %s" % holiday)
+        exit(0)
+    try:
         season = redthis.get("velux/season")
         logging.info("Redis Season velux/season = %s" % season)
     except:
