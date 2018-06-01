@@ -98,6 +98,8 @@ def check_season():
         logging.info("Holiday mode is disabled we need to carry on")
     if  (holiday):
         logging.info("Holiday Countdown exists = %s" % holiday)
+        redthis.rpush('attic/jobqueue',"/usr/local/bin/all_close.sh")
+        sleep(60)
         exit(0)
     try:
         season = redthis.get("velux/season")
