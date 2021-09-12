@@ -128,13 +128,14 @@ def control_velux():
         logging.info ("Full Trigger temp = %f" % velux_full_open_trigger)
         logging.info ("Close Trigger temp = %f" % velux_close_trigger)
         logging.info ("Velux state = %s" % velux_state)
-        if (boiler_been_on == "True") and (velux_state != "ClosedAsleep") :
+        logging.info ("Boiler state = %s" % boiler_been_on)
+        if (boiler_been_on == "On") and (velux_state != "ClosedAsleep") :
             logging.info ("Boiler has been on in the last 4 hours")
             logging.info ("Window not closed asleep Closing")
             window_task(open,"closedasleep")
-        elif (boiler_been_on == "True") and (velux_state == "ClosedAsleep"):
+        elif (boiler_been_on == "On") and (velux_state == "ClosedAsleep"):
             logging.info ("Boiler has been on and window has closed")            
-        elif (boiler_been_on != "True"): 
+        elif (boiler_been_on != "On"): 
              logging.info ("Boiler has not been on in 4 hours. We can do something \o/ ")            
              study_temperatures(attic_temp, velux_half_open_trigger, velux_full_open_trigger, velux_close_trigger, velux_state)
         else:
